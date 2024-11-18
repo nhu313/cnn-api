@@ -1,0 +1,28 @@
+# Site settings
+title: "CNN Cancer Detection"
+description: "Deep-Wide architecture & Data manipulation"
+layout: default 
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Minima theme settings
+minima:
+  skin: dark # Options: "classic", "solarized", or "dark"
+  custom_css: styles.css
+
+
+# Exclude specific files or directories from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle
+  - vendor/cache
+  - vendor/gems
+  - vendor/ruby
+
+# Plugins
+plugins:
+  - jekyll-feed

@@ -1,0 +1,9 @@
+# FOR DOCKER IMAGE
+numpy<2
+torch
+gunicorn
+pillow
+requests
+Flask == 2.0.1
+Werkzeug==2.2.2
+requests==2.32.3
