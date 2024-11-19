@@ -11,7 +11,7 @@ app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
 # Initialize the CNN model
 cnn = CNN(architecture='deep-wide',
            input_tensors="app/utils/data/label_tensors.pt",
-           model_path='app/utils/data/model_11_12_dw.pth'
+           model_path='app/utils/data/model_11_15_dw.pth'
         )
 
 @app.route('/api/process_image', methods=['POST'])
@@ -24,7 +24,7 @@ def process_image():
 
 @app.route('/')
 def home():
-    return send_from_directory('frontend/static', 'predict_image.html')
+    return send_from_directory('app/frontend/static', 'predict_image.html')
 
 
  
