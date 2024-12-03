@@ -37,4 +37,4 @@ def home():
     return send_from_directory('app/frontend/static', 'predict_image.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=True, host='0.0.0.0', port=8080)
