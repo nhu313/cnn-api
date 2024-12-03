@@ -18,11 +18,10 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 5001
 
 # Define environment variable
 ENV FLASK_APP=main.py
 
 # Use a production WSGI server (e.g., Gunicorn)
-# CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "main:app"]
-CMD ["flask run --host=0.0.0.0 --port=8080"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5001", "main:app"]
