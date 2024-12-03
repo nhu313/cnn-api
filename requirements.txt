@@ -1,6 +1,6 @@
 # FOR DOCKER IMAGE
 numpy<2
-cv2
+open-cv2
 torch
 gunicorn
 pillow
