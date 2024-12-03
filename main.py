@@ -30,14 +30,11 @@ def process_image():
 
     category = cnn.predict_image(file)
     print(category)
-    return jsonify({'category': category[1],  'file_path': file_path, 'file_name': file.filename})
+    return jsonify({'category': category[1],  'text': category[0], 'file_path': file_path, 'file_name': file.filename})
 
 @app.route('/')
 def home():
     return send_from_directory('app/frontend/static', 'predict_image.html')
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
