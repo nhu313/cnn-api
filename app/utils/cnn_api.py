@@ -147,7 +147,7 @@ class CNN():
         img_tensor.to(self.device)  # Return tensor on correct device
         with torch.no_grad():
             output = self.model(img_tensor.unsqueeze(0))  # Add batch dimension
-            predicted_label_index = torch.argmax(abs(output), dim=1).item()
+            predicted_label_index = torch.argmax(output, dim=1).item()
             print(output)
             
             
