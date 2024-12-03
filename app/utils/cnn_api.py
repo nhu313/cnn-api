@@ -122,13 +122,13 @@ class CNN():
         self.model.eval()
         img = self._open_image(path_to_image)
         img_tensor = torch.tensor(img, dtype=torch.float32) #/ 255.0  # Normalize to [0, 1]
-        #img_tensor = F.normalize(img_tensor)
 
         img_tensor = img_tensor.permute(2, 0, 1)  # (H, W, C) -> (C, H, W)
         img_tensor.to(self.device)  # Return tensor on correct device
         with torch.no_grad():
             output = self.model(img_tensor.unsqueeze(0))  # Add batch dimension
-            predicted_label_index = torch.argmax(output, dim=1).item()
+            predicted_label_index = torch.argmax(abs(output), dim=1).item()
+            print(output)
             
             
             return (self.idx_to_class[predicted_label_index], predicted_label_index)
