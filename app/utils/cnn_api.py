@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 import torch.nn as nn
+import cv2
 from PIL import Image
 
 
@@ -99,7 +100,7 @@ class CNN():
         self.model.eval()
         print("Model loaded from disk.")
     
-    def _open_image(self, path_to_image:str):
+    def _OOpen_image(self, path_to_image:str):
         '''
         Return a resized NumpyArray of (128,128)
         '''
@@ -116,7 +117,26 @@ class CNN():
         # Convert resized image back to a NumPy array
         img_resized = np.array(image_resized)
         return img_resized  
-     
+    
+    def _open_image(self, image_path: str, add_noise:bool= True, cat=False, show:bool=False) -> np.ndarray:
+        """Opens and transforms the image into NumPy array form."""
+        img = cv2.imread(image_path)
+        height, width = img.shape[:2]
+        new_height = height - (height // 8) # crop out stamp on btm right
+        img_resized = cv2.resize(img, self.size)  # Resize the image
+        if show:
+            cv2.imshow("Resized Image", img_resized)
+            cv2.waitKey(0)  # Wait for a key press to close the window
+            cv2.destroyAllWindows()  # Close the window after key press
+
+        img_resized = img_resized[0:new_height, 0:width]
+
+
+        # # TODO add noise to each image
+        # if add_noise and random.randint(0, 1) > 0.9 and cat == False:
+        #     return self._add_gaussian_noise(img_resized)
+        return img_resized
+
     def predict_image(self, path_to_image) -> int:
         # Predict class for a single image tensor
         self.model.eval()
