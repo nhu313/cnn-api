@@ -30,7 +30,7 @@ def process_image():
 
     category = cnn.predict_image(file)
     print(category)
-    return jsonify({'category': category, 'file_path': file_path, 'file_name': file.filename})
+    return jsonify({'category': category[1],  'file_path': file_path, 'file_name': file.filename})
 
 @app.route('/')
 def home():
