@@ -28,7 +28,7 @@ def process_image():
     file_path = os.path.join(app.config['UPLOAD'], file.filename)
     file.save(file_path)
 
-    category = cnn.predict_image(file)
+    category = cnn.predict_image(file_path)
     print(category)
     return jsonify({'category': category[1],  'text': category[0], 'file_path': file_path, 'file_name': file.filename})
 
