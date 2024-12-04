@@ -8,11 +8,15 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /app
 
+RUN "apt-get install -y libsm6 libxext6 libgl1-mesa-glx libxrender-dev"
+
 # Copy the requirements.txt file into the container at /app
 COPY requirements.txt .
 
+
 # Install any needed Python packages specified in requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
+
 
 # Copy the current directory contents into the container at /app
 COPY . .
@@ -24,4 +28,5 @@ EXPOSE 8080
 ENV FLASK_APP=main.py
 
 # Use a production WSGI server (e.g., Gunicorn)
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "main:app"]
+# CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "main:app"]
+CMD "flask run --host=0.0.0.0 --port=8080"
