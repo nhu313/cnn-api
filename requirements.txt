@@ -1,6 +1,6 @@
 # FOR DOCKER IMAGE
 numpy<2
-opencv-python
+# opencv-python == 4.10.0.84
 torch
 gunicorn
 pillow
@@ -9,3 +9,4 @@ Flask == 2.0.1
 Werkzeug==2.2.2
 requests==2.32.3
 flask-cors
+opencv-python-headless
