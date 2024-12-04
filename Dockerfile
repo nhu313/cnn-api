@@ -8,14 +8,13 @@ FROM python:3.10-slim
 # Set the working directory in the container
 WORKDIR /app
 
-RUN "apt-get install -y libsm6 libxext6 libgl1-mesa-glx libxrender-dev"
-
 # Copy the requirements.txt file into the container at /app
 COPY requirements.txt .
 
 
 # Install any needed Python packages specified in requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install opencv-python
 
 
 # Copy the current directory contents into the container at /app
