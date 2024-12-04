@@ -27,5 +27,5 @@ EXPOSE 8080
 ENV FLASK_APP=main.py
 
 # Use a production WSGI server (e.g., Gunicorn)
-# CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "main:app"]
-CMD "flask run --host=0.0.0.0 --port=8080"
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "main:app"]
+# CMD "flask run --host=0.0.0.0 --port=8080"
